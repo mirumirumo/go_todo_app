@@ -54,6 +54,7 @@ var (
 	_ Beginner = (*sqlx.DB)(nil)
 	_ Preparer = (*sqlx.DB)(nil)
 	_ Queryer  = (*sqlx.DB)(nil)
+	_ Queryer  = (*sqlx.Tx)(nil)
 	_ Execer   = (*sqlx.DB)(nil)
 	_ Execer   = (*sqlx.Tx)(nil)
 )
