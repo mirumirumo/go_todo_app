@@ -3,6 +3,7 @@ package store
 import (
 	"context"
 	"database/sql"
+	"errors"
 	"fmt"
 	"time"
 
@@ -11,6 +12,10 @@ import (
 	"github.com/mirumirumo/go_todo_app/clock"
 	"github.com/mirumirumo/go_todo_app/config"
 )
+
+const ErrCodeMySQLDuplicateEntry = 1062
+
+var ErrAlreadyEntry = errors.New("duplicate entry")
 
 func New(ctx context.Context, cfg *config.Config) (*sqlx.DB, func(), error) {
 	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?parseTime=true",
