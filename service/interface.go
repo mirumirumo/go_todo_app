@@ -7,6 +7,7 @@ import (
 	"github.com/mirumirumo/go_todo_app/store"
 )
 
+//go:generate go run github.com/matryer/moq -out moq_test.go . TaskAdder TaskLister UserRegister UserGetter TokenGenerator
 type TaskAdder interface {
 	AddTask(ctx context.Context, db store.Execer, t *entity.Task) error
 }
