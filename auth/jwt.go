@@ -32,7 +32,7 @@ type JWTer struct {
 	Clocker               clock.Clocker
 }
 
-type Store interface {
+//go:generate go run github.com/matryer/moq -out moq_test.go . Store
 	Save(ctx context.Context, key string, userID entity.UserID) error
 	Load(ctx context.Context, key string) (entity.UserID, error)
 }
